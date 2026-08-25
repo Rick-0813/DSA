@@ -1,0 +1,8 @@
+Kota Kinabalu:Kuala Lumpur,Kuching,Miri,Sandakan
+Johor Bahru:Kuala Lumpur,Kuching
+Penang:Kuala Lumpur,Langkawi
+Miri:Kuching,Kota Kinabalu
+Sandakan:Kota Kinabalu
+Kuala Lumpur:Penang,Johor Bahru,Kota Kinabalu,Kuching,Langkawi
+Kuching:Kuala Lumpur,Johor Bahru,Miri,Kota Kinabalu
+Langkawi:Kuala Lumpur,Penang
