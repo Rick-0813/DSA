@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //
         Scanner scanner = new Scanner(System.in);
         AuthManager authManager = new AuthManager();
         FlightGraph flightGraph = new FlightGraph();
 
         boolean running = true;
         while (running) {
+            //display pre-login menu while true
             System.out.println();
             UIHelper.printSecurityBanner();
             UIHelper.printBoxRow("[1] Staff Login");
@@ -20,6 +22,8 @@ public class Main {
 
             switch (choice) {
                 case "1":
+                    //the if is use to verify the login
+                    //after return true display the main menu
                     if (authManager.login(scanner)) {
                         MenuHandler menuHandler = new MenuHandler(flightGraph, authManager, scanner);
                         menuHandler.showMainMenu();

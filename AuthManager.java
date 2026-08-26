@@ -6,32 +6,43 @@ import java.util.Scanner;
 public class AuthManager {
     private static final String STAFF_FILE = "staff_data.txt";
 
+    //declare a new class
     public static class StaffAccount {
         private String staffId;
         private String staffName;
         private String password;
 
+        //constructor
         public StaffAccount(String staffId, String staffName, String password) {
             this.staffId = staffId.trim().toUpperCase();
             this.staffName = staffName.trim();
             this.password = password.trim();
         }
 
+        //getter
         public String getStaffId() { return staffId; }
         public String getStaffName() { return staffName; }
         public String getPassword() { return password; }
     }
 
+    // key store the staffID
+    //value store the store staffID, name and password
     private Map<String, StaffAccount> staffDatabase;
+    //staffAccount data type so it is store the staff information
     private StaffAccount currentLoggedInStaff;
 
+    //constructor
     public AuthManager() {
+        //use a new empty HashMap to itself
         this.staffDatabase = new HashMap<>();
+        //set the currentLoggedInStaff as null because there is no one logged in while the system start
         this.currentLoggedInStaff = null;
+        //read the data abd store it to  the staffDatabase HashMap
         loadStaffFromFile();
     }
 
     public boolean login(Scanner scanner) {
+        //set only 3 attempts to log in
         int maxAttempts = 3;
         int attempts = 0;
 
@@ -47,8 +58,11 @@ public class AuthManager {
             System.out.print("Enter Password  : ");
             String inputPass = scanner.nextLine().trim();
 
+            //check is the inputID contain in the staffDatabase
             if (staffDatabase.containsKey(inputId)) {
+                //get the entire account information so later can use the getPassword function the validate the password
                 StaffAccount account = staffDatabase.get(inputId);
+                //check the password
                 if (account.getPassword().equals(inputPass)) {
                     this.currentLoggedInStaff = account;
                     System.out.println("\n" + UIHelper.BORDER_LINE);
@@ -86,6 +100,7 @@ public class AuthManager {
             System.out.println("[Error] Staff ID cannot be empty.");
             return false;
         }
+        //check the id is already exist or not if yes then prompt the error message
         if (staffDatabase.containsKey(id)) {
             System.out.println("[Error] Staff ID '" + id + "' is already registered in the system.");
             return false;
@@ -116,6 +131,7 @@ public class AuthManager {
         return true;
     }
 
+    //getter but only can use when the currentloggedinsaff in not null mean only can use when already have staff log in
     public String getCurrentStaffId() {
         return currentLoggedInStaff != null ? currentLoggedInStaff.getStaffId() : "N/A";
     }

@@ -36,28 +36,24 @@ public class UIHelper {
         System.out.println(BORDER_LINE);
     }
 
-    public static void printComingSoonBanner(String moduleName, String assignedMember) {
-        System.out.println("\n" + BORDER_LINE);
-        printBoxRow("MODULE: " + moduleName.toUpperCase());
-        printBoxRow("ASSIGNED TO: " + assignedMember);
-        System.out.println(BORDER_LINE);
-        printBoxRow("   [!] STATUS: UNDER DEVELOPMENT (COMING SOON...)");
-        printBoxRow("   This function is currently pending implementation.");
-        System.out.println(BORDER_LINE + "\n");
-    }
-
     public static void printBoxRow(String content) {
+        // set total width for UI
         int totalWidth = 100;
+        // check the content size, if too long truncate it and add "..."
         if (content.length() > totalWidth - 4) {
             content = content.substring(0, totalWidth - 7) + "...";
         }
+        //calculate how many space need to fill
         int padding = totalWidth - content.length() - 2;
+        //set the format for the row
         StringBuilder sb = new StringBuilder();
         sb.append("|  ").append(content);
+        //use for loop to append " " to align the right border
         for (int i = 0; i < padding; i++) {
             sb.append(" ");
         }
         sb.append("|");
         System.out.println(sb.toString());
     }
+
 }
