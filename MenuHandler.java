@@ -24,28 +24,34 @@ public class MenuHandler {
             UIHelper.printBoxRow("[2] Search for an Airport (BFS Traversal)");
             UIHelper.printBoxRow("[3] View the Complete MAS Flight Network ");
             UIHelper.printBoxRow("[4] Find Flight Path (Point-to-Point)");
-            UIHelper.printBoxRow("[5] Logout & Return to Portal");
+            UIHelper.printBoxRow("[5] View Graphical Network Map (GUI)"); // NEW OPTION
+            UIHelper.printBoxRow("[6] Logout & Return to Portal");        // UPDATED TO 6
             System.out.println(UIHelper.BORDER_LINE);
-            System.out.print("Enter your choice (1-5) : ");
+            System.out.print("Enter your choice (1-6) : ");
 
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
                 case "1":
                     handleModifyGraph();
-                    pauseForEnter();
+                    // ... (keep existing case 1 logic)
                     break;
                 case "2":
                     handleSearchAirport();
                     break;
                 case "3":
                     flightGraph.displayNetwork();
-                    pauseForEnter();
+                    // ... (keep existing case 3 logic)
                     break;
                 case "4":
                     handleFindPath();
                     break;
                 case "5":
+                    // NEW: Triggers the Swing map window
+                    FlightGraphView.createAndShowGui(flightGraph.getAdjList());
+                    System.out.println("\n[System] Opening graphical map window...");
+                    break;
+                case "6":
                 case "Exit":
                 case "exit":
                     authManager.logout();
@@ -53,7 +59,7 @@ public class MenuHandler {
                     running = false;
                     break;
                 default:
-                    System.out.println("[Error] Invalid choice. Please choose 1, 2, 3, 4 or 5.");
+                    System.out.println("[Error] Invalid choice. Please choose 1 to 6.");
             }
         }
     }

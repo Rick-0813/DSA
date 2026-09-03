@@ -276,4 +276,8 @@ public class FlightGraph {
         adjList.get("Kota Kinabalu").addAll(Arrays.asList("Kuala Lumpur", "Kuching", "Miri", "Sandakan"));
         adjList.get("Sandakan").addAll(Arrays.asList("Kota Kinabalu"));
     }
+
+    public Map<String, LinkedList<String>> getAdjList() {
+        return this.adjList;
+    }
 }
