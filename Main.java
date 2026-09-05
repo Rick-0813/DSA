@@ -9,7 +9,7 @@ public class Main {
 
         boolean running = true;
         while (running) {
-            //display pre-login menu while true
+            // display pre-login menu while true
             System.out.println();
             UIHelper.printSecurityBanner();
             UIHelper.printBoxRow("[1] Staff Login");
@@ -22,8 +22,8 @@ public class Main {
 
             switch (choice) {
                 case "1":
-                    //the if is use to verify the login
-                    //after return true display the main menu
+                    // the if is use to verify the login
+                    // after return true display the main menu
                     if (authManager.login(scanner)) {
                         MenuHandler menuHandler = new MenuHandler(flightGraph, authManager, scanner);
                         menuHandler.showMainMenu();

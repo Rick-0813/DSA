@@ -42,12 +42,10 @@ public class FlightGraphView extends JPanel {
         Graphics2D g = (Graphics2D) graphics.create();
         try {
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            // 终极修复：强制开启高精度纯粹笔触，防止 Windows 缩放导致线条渲染错位
             g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
             
             // 1. Draw Edges
             g.setColor(Color.DARK_GRAY); 
-            // 终极修复：改回 1.0f 细线，彻底避开大于 1 像素时的“空心线”渲染 Bug
             g.setStroke(new java.awt.BasicStroke(1.0f)); 
             
             java.util.Set<String> drawnEdges = new java.util.HashSet<>();
