@@ -27,11 +27,11 @@ public class FlightGraphView extends JPanel {
         
         // Map MAS airports to fixed X/Y coordinates
         coordinates.put("Langkawi", new Point(100, 100));
-        coordinates.put("Penang", new Point(150, 180));
+        coordinates.put("Penang", new Point(90, 230)); 
         coordinates.put("Kuala Lumpur", new Point(250, 300));
         coordinates.put("Johor Bahru", new Point(350, 400));
         coordinates.put("Kuching", new Point(500, 320));
-        coordinates.put("Miri", new Point(600, 200));
+        coordinates.put("Miri", new Point(650, 260)); 
         coordinates.put("Kota Kinabalu", new Point(680, 120));
         coordinates.put("Sandakan", new Point(700, 220));
     }
